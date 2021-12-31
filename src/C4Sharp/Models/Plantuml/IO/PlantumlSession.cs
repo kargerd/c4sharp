@@ -11,6 +11,7 @@ namespace C4Sharp.Models.Plantuml.IO
     public class PlantumlSession : IDisposable
     {
         public bool StandardLibraryBaseUrl { get; private set; }
+        public bool GraphvizDot { get; private set; }
         public bool GenerateDiagramImages { get; private set; }
         public bool GenerateDiagramSvgImages { get; private set; }
         private string? PlantumlJarPath { get; set; }
@@ -40,6 +41,22 @@ namespace C4Sharp.Models.Plantuml.IO
         public PlantumlSession UseStandardLibraryBaseUrl()
         {
             StandardLibraryBaseUrl = true;
+            return this;
+        }
+
+        /// <summary>
+        /// To provide full portability C4Sharp uses the Smetana layouting.
+        /// However there might be scenarios where the Graphviz/DOT implementation
+        /// gives better results, so by using this method the Graphviz/DOT is used 
+        /// to compute node positioning in the diagrams. Be aware that, in addition to Java,
+        /// DOT needs to be installed on the system and that for each diagram a new process ist startet
+        /// to calculate the node positions.
+        /// <seealso href="https://plantuml.com/de/smetana02"/>
+        /// </summary>
+        /// <returns></returns>
+        public PlantumlSession UseGraphvizDot()
+        {
+            GraphvizDot = true;
             return this;
         }
 
@@ -117,9 +134,10 @@ namespace C4Sharp.Models.Plantuml.IO
             var imageFormatOutputArg = string.IsNullOrWhiteSpace(generatedImageFormat)
                 ? string.Empty
                 : $"-t{generatedImageFormat}";
+            var pragmaLayoutArg = GraphvizDot ? string.Empty : "-Playout=smetana";
 
             return
-                $"-jar \"{PlantumlJarPath}\" {resourcesOriginArg} {imageFormatOutputArg} -Playout=smetana -verbose -o \"{directory}\" -charset UTF-8";
+                $"-jar \"{PlantumlJarPath}\" {resourcesOriginArg} {imageFormatOutputArg} {pragmaLayoutArg} -verbose -o \"{directory}\" -charset UTF-8";
         }
 
         /// <summary>
@@ -138,7 +156,8 @@ namespace C4Sharp.Models.Plantuml.IO
                 var results = new StringBuilder();
                 var fileName = Guid.NewGuid().ToString("N");
                 var standardLibraryBaseUrlArgs = StandardLibraryBaseUrl ? string.Empty : "-DRELATIVE_INCLUDE=\".\"";
-                var jar = $"-jar {PlantumlJarPath} {standardLibraryBaseUrlArgs} -Playout=smetana -verbose -charset UTF-8";
+                var pragmaLayoutArg = GraphvizDot ? string.Empty : "-Playout=smetana";
+                var jar = $"-jar {PlantumlJarPath} {standardLibraryBaseUrlArgs} {pragmaLayoutArg} -verbose -charset UTF-8";
                 
                 ProcessInfo.Arguments = $"{jar} -pipe > {fileName}.png";
                 ProcessInfo.RedirectStandardOutput = true;
