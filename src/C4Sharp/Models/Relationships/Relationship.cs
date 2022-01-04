@@ -1,4 +1,7 @@
-﻿namespace C4Sharp.Models.Relationships;
+﻿using System;
+using System.Runtime.CompilerServices;
+
+namespace C4Sharp.Models.Relationships;
 
 /// <summary>
 /// Relationship
@@ -12,6 +15,7 @@ public record Relationship
     public string[] Tags { get; private init; }
     public Position Position { get; private set; }
     public Direction Direction { get; }
+    public string? IndexExpression { get; private set; }
 
     public Relationship this[string label]
     {
@@ -21,7 +25,7 @@ public record Relationship
             return this;
         }
     }
-
+        
     public Relationship this[Position position]
     {
         get
@@ -29,14 +33,24 @@ public record Relationship
             Position = position;
             return this;
         }
-    }
-
+    }        
+        
     public Relationship this[string label, string protocol]
     {
         get
         {
             Label = label;
             Protocol = protocol;
+            return this;
+        }
+    }    
+        
+    public Relationship this[int index, [CallerArgumentExpression("index")] string? argumentExpression = null]
+    {
+        get
+        {
+            _ = index;
+            IndexExpression = argumentExpression;
             return this;
         }
     }
@@ -61,11 +75,11 @@ public record Relationship
         Position = position;
         Tags = Array.Empty<string>();
     }
-    
+
     /// <summary>
     /// Constructor
     /// </summary>
-    /// <param name="from"></param>
+    /// <param name="from"></param>    
     /// <param name="direction"></param>
     /// <param name="to"></param>
     /// <param name="label"></param>
@@ -81,7 +95,7 @@ public record Relationship
         Protocol = protocol;
         Position = position;
         Tags = Array.Empty<string>();
-    }    
+    }
 
     /// <summary>
     /// Constructor
@@ -93,7 +107,7 @@ public record Relationship
         : this(from, Direction.Forward, to, label, string.Empty, Position.None)
     {
     }
-
+        
     /// <summary>
     /// Constructor
     /// </summary>
@@ -122,6 +136,6 @@ public record Relationship
     public static Relationship operator |(Relationship a, Position position)
     {
         return new Relationship(a.From, a.Direction, a.To, a.Label, a.Protocol, position);
-    }    
+    }
 }
 

@@ -29,6 +29,7 @@ public class ExportingDiagramFixture
             Path.Join(path, "..", ".c4s", "C4_Context.puml"),
             Path.Join(path, "..", ".c4s", "C4_Container.puml"),
             Path.Join(path, "..", ".c4s", "C4_Deployment.puml"),
+            Path.Join(path, "..", ".c4s", "C4_Dynamic.puml"),
         };
 
         VerifyIfFilesExists(files);
@@ -41,7 +42,8 @@ public class ExportingDiagramFixture
             Path.Join(path, $"{diagramName}-c4component.puml"),
             Path.Join(path, $"{diagramName}-c4context.puml"),
             Path.Join(path, $"{diagramName}-c4container.puml"),
-            Path.Join(path, $"{diagramName}-c4deployment.puml")
+            Path.Join(path, $"{diagramName}-c4deployment.puml"),
+            Path.Join(path, $"{diagramName}-c4dynamic.puml"),
         };
 
         VerifyIfFilesExists(files);
@@ -54,7 +56,8 @@ public class ExportingDiagramFixture
             Path.Join(path, $"{diagramName}-c4component.png"),
             Path.Join(path, $"{diagramName}-c4context.png"),
             Path.Join(path, $"{diagramName}-c4container.png"),
-            Path.Join(path, $"{diagramName}-c4deployment.png")
+            Path.Join(path, $"{diagramName}-c4deployment.png"),
+            Path.Join(path, $"{diagramName}-c4dynamic.png"),
         };
 
         VerifyIfFilesExists(files);
@@ -67,7 +70,8 @@ public class ExportingDiagramFixture
             Path.Join(path, $"{diagramName}-c4component.svg"),
             Path.Join(path, $"{diagramName}-c4context.svg"),
             Path.Join(path, $"{diagramName}-c4container.svg"),
-            Path.Join(path, $"{diagramName}-c4deployment.svg")
+            Path.Join(path, $"{diagramName}-c4deployment.svg"),
+            Path.Join(path, $"{diagramName}-c4dynamic.svg"),
         };
 
         VerifyIfFilesExists(files);
@@ -79,7 +83,8 @@ public class ExportingDiagramFixture
             Path.Join(path, $"{diagramName}-c4component.png"),
             Path.Join(path, $"{diagramName}-c4context.png"),
             Path.Join(path, $"{diagramName}-c4container.png"),
-            Path.Join(path, $"{diagramName}-c4deployment.png")
+            Path.Join(path, $"{diagramName}-c4deployment.png"),
+            Path.Join(path, $"{diagramName}-c4dynamic.png"),
         };
 
         VerifyIfFilesNonExists(files);
@@ -92,7 +97,8 @@ public class ExportingDiagramFixture
             Path.Join(path, $"{diagramName}-c4component.svg"),
             Path.Join(path, $"{diagramName}-c4context.svg"),
             Path.Join(path, $"{diagramName}-c4container.svg"),
-            Path.Join(path, $"{diagramName}-c4deployment.svg")
+            Path.Join(path, $"{diagramName}-c4deployment.svg"),
+            Path.Join(path, $"{diagramName}-c4dynamic.svg"),
         };
 
         VerifyIfFilesNonExists(files);

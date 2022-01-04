@@ -17,7 +17,7 @@ public class DiagramTests
         var diagram = new ComponentDiagram { Title = title };
         diagram.Slug().Should().Be("test-a-c4component");
     }
-
+        
     [Theory]
     [InlineData("Test A")]
     [InlineData("test A")]
@@ -26,8 +26,8 @@ public class DiagramTests
     {
         var diagram = new ContextDiagram { Title = title };
         diagram.Slug().Should().Be("test-a-c4context");
-    }
-
+    }   
+        
     [Theory]
     [InlineData("Test A")]
     [InlineData("test A")]
@@ -36,8 +36,8 @@ public class DiagramTests
     {
         var diagram = new ContainerDiagram { Title = title };
         diagram.Slug().Should().Be("test-a-c4container");
-    }
-
+    }  
+        
     [Theory]
     [InlineData("Test A")]
     [InlineData("test A")]
@@ -46,6 +46,16 @@ public class DiagramTests
     {
         var diagram = new DeploymentDiagram { Title = title };
         diagram.Slug().Should().Be("test-a-c4deployment");
+    }
+
+    [Theory]
+    [InlineData("Test A")]
+    [InlineData("test A")]
+    [InlineData("TEST A")]
+    public void TestWhenSlugDynamicDiagram(string title)
+    {
+        var diagram = new DynamicDiagram { Title = title };
+        diagram.Slug().Should().Be("test-a-c4dynamic");
     }
 
     [Fact]

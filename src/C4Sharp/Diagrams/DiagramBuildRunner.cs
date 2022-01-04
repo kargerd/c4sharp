@@ -44,7 +44,6 @@ public abstract class DiagramBuildRunner : IDiagramBuildRunner
         => _structures.Items[new StructureIdentity(key, instance).Value]
            ?? throw new KeyNotFoundException($"Structure {key} not found");
 
-
     protected abstract IEnumerable<Structure> Structures();
     protected abstract IEnumerable<Relationship> Relationships();
     protected virtual IElementStyle? SetStyle() => null;
@@ -62,6 +61,7 @@ public abstract class DiagramBuildRunner : IDiagramBuildRunner
             DiagramConstants.Container => Activator.CreateInstance<ContainerDiagram>(),
             DiagramConstants.Context => Activator.CreateInstance<ContextDiagram>(),
             DiagramConstants.Deployment => Activator.CreateInstance<DeploymentDiagram>(),
+            DiagramConstants.Dynamic => Activator.CreateInstance<DynamicDiagram>(),
             _ => throw new ArgumentNullException(nameof(DiagramType), $"{nameof(DiagramType)} is required")
         };
 

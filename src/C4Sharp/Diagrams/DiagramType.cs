@@ -6,4 +6,5 @@ public record DiagramType(string Value)
     public static DiagramType Container => new (DiagramConstants.Container);
     public static DiagramType Context => new (DiagramConstants.Context);
     public static DiagramType Deployment => new (DiagramConstants.Deployment);
+    public static DiagramType Dynamic => new(DiagramConstants.Dynamic);
 }

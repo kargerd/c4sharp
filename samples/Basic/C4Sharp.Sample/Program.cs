@@ -27,6 +27,7 @@ internal static class Program
             new ComponentDiagramBuildRunner().Build(),
             new DeploymentDiagramBuildRunner().Build(),
             new EnterpriseDiagramBuildRunner().Build().SetStyle(Style),
+            new DynamicDiagramBuildRunner().Build(),
         };
         new PlantumlSession()
             .UseDiagramImageBuilder()

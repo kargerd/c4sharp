@@ -17,7 +17,8 @@ public class ExportingDiagramTests : ExportingDiagramFixture, IDisposable
             ContextDiagramBuilder.Build() with { Title = "Diagram" },
             ContainerDiagramBuilder.Build() with { Title = "Diagram" },
             ComponentDiagramBuilder.Build() with { Title = "Diagram" },
-            DeploymentDiagramBuilder.Build() with { Title = "Diagram" }
+            DeploymentDiagramBuilder.Build() with { Title = "Diagram" },
+            DynamicDiagramBuilder.Build() with { Title = "Diagram" },
         };
 
         using var session = new PlantumlSession();
@@ -39,7 +40,8 @@ public class ExportingDiagramTests : ExportingDiagramFixture, IDisposable
             ContextDiagramBuilder.Build() with { Title = "Diagram" },
             ContainerDiagramBuilder.Build() with { Title = "Diagram" },
             ComponentDiagramBuilder.Build() with { Title = "Diagram" },
-            DeploymentDiagramBuilder.Build() with { Title = "Diagram" }
+            DeploymentDiagramBuilder.Build() with { Title = "Diagram" },
+            DynamicDiagramBuilder.Build() with { Title = "Diagram" },
         };
 
         var pathSave = new DirectoryInfo(path).FullName;
@@ -63,7 +65,8 @@ public class ExportingDiagramTests : ExportingDiagramFixture, IDisposable
             ContextDiagramBuilder.Build() with { Title = "Diagram" },
             ContainerDiagramBuilder.Build() with { Title = "Diagram" },
             ComponentDiagramBuilder.Build() with { Title = "Diagram" },
-            DeploymentDiagramBuilder.Build() with { Title = "Diagram" }
+            DeploymentDiagramBuilder.Build() with { Title = "Diagram" },
+            DynamicDiagramBuilder.Build() with { Title = "Diagram" },
         };
 
         new PlantumlSession()
@@ -84,7 +87,8 @@ public class ExportingDiagramTests : ExportingDiagramFixture, IDisposable
             ContextDiagramBuilder.Build() with { Title = "Diagram" },
             ContainerDiagramBuilder.Build() with { Title = "Diagram" },
             ComponentDiagramBuilder.Build() with { Title = "Diagram" },
-            DeploymentDiagramBuilder.Build() with { Title = "Diagram" }
+            DeploymentDiagramBuilder.Build() with { Title = "Diagram" },
+            DynamicDiagramBuilder.Build() with { Title = "Diagram" },
         };
 
         new PlantumlSession()
@@ -105,7 +109,8 @@ public class ExportingDiagramTests : ExportingDiagramFixture, IDisposable
             ContextDiagramBuilder.Build() with { Title = "Diagram" },
             ContainerDiagramBuilder.Build() with { Title = "Diagram" },
             ComponentDiagramBuilder.Build() with { Title = "Diagram" },
-            DeploymentDiagramBuilder.Build() with { Title = "Diagram" }
+            DeploymentDiagramBuilder.Build() with { Title = "Diagram" },
+            DynamicDiagramBuilder.Build() with { Title = "Diagram" },
         };
 
         new PlantumlSession()
